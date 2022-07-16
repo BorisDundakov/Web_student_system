@@ -7,4 +7,6 @@ degree_user = {"degree_id": ["student1", "student2", "student3"]}
 degree_course = {"degree_id": ["course_id1", "course_id2", "course_id3"]}
 student_courses = {"student_id": ["course1", "course2", "course3"]}  # generated
 
+lecturer_qualifications_list = ["doctor", "doctor of science", "assistant professor",
+                                "associate professor"]
 
