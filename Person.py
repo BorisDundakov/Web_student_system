@@ -1,9 +1,10 @@
 class Person:
-    def __init__(self, id, first_name, second_name, last_name, status):
+    def __init__(self, id, first_name, second_name, last_name, age, status):
         self._id = id
         self._first_name = first_name
         self._second_name = second_name
         self._last_name = last_name
+        self._age = age
         self._status = status
 
     def generate_univeristy_email(self, faculty_number=None):

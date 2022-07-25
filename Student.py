@@ -1,13 +1,14 @@
 from Person import Person
 
 
+# from SQL import
+
 class Student(Person):
 
-    def __init__(self, user_id, name, age, degree_name, year, predicted_graduation_year, degree_type, id, first_name,
+    def __init__(self, age, degree_name, year, predicted_graduation_year, degree_type, id, first_name,
                  second_name, last_name, status, university_social_contributions=True, faculty_number=None):
-        super().__init__(id, first_name, second_name, last_name, status)
-        self._user_id = user_id
-        self._name = name
+        super().__init__(id, first_name, second_name, last_name, age, status)
+        self._id = id
         self._age = age
         self._degree_name = degree_name
         self._year = year
@@ -25,9 +26,37 @@ class Student(Person):
         return
 
     def generate_faculty_number(self, user_id, course):
+        # userId + courseId
         pass
 
     def calc_average_grade(self, *grades):
         pass
 
 
+# TESTING ADDING DATA TO THE DATABASE --> IT WORKS!!
+import psycopg2
+
+first_student = Student(id=2, first_name='Bob', second_name='Machelroy', last_name='Jameson', age=22,
+                        degree_name='Mathemathics', year=2019,
+                        predicted_graduation_year=2023, degree_type='Bachelor', status=1, faculty_number=18184052,
+                        university_social_contributions=True)
+
+# test = first_student._age --> YES!
+
+
+conn = psycopg2.connect(database="DB_WebStudent",
+                        user='postgres',
+                        password='postgres123',
+                        host='localhost',
+                        port=5432)
+
+cur = conn.cursor()
+
+cur.execute("""INSERT INTO "DB_WebStudent".public.student ("firstName","secondName","thirdName",
+    "email","degreeId","degreeTypeId") \
+      VALUES (%s, %s, %s, %s, %s, %s)""",
+    (first_student._first_name, first_student._second_name, first_student._last_name, 'goshopetkov@email.com', 1, 1))
+
+conn.commit()
+
+conn.close()
