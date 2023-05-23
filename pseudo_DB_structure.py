@@ -10,3 +10,4 @@ student_courses = {"student_id": ["course1", "course2", "course3"]}  # generated
 lecturer_qualifications_list = ["doctor", "doctor of science", "assistant professor",
                                 "associate professor"]
 
+#commited from the Github phone app
