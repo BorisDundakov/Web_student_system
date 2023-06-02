@@ -14,7 +14,7 @@ from random import randrange
 
 def random_number():
 
-    number = randrange(10)
+    number = randrange(1,10)
 
     print(number)
 
